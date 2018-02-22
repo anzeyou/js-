@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				width: 100px;
+				height: 200px;
+				background: red;
+				position: absolute;
+				left: -100px;
+			}
+			#box{
+				width: 20px;
+				height: 70px;
+				background: black;
+				position: absolute;
+				top: 65px;
+				right: -20px;
+				color: #fff;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1">
+			<div id="box">分享</div>
+		</div>
+		
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var div1=document.getElementById('div1');
+			var timer=null;
+			
+			div1.onmouseout=function(){
+				show(-100);
+			}
+			
+			div1.onmouseover=function(){
+				show(0);
+			}
+			
+			//将鼠标移入移出函数中的相同部分提炼出来，将不同的部分作为参数传进去
+			function show(target,speed){
+				clearInterval(timer);
+					timer=setInterval(function(){
+						if(div1.offsetLeft==target){
+							clearInterval(timer);
+						}
+						else{
+							if(div1.offsetLeft>target){
+								speed=-10;
+							}else{
+								speed=10;
+							}
+							div1.style.left=div1.offsetLeft+speed+"px";
+						}
+					},30)
+				
+			}
+		</script>
+	</body>
+	
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title></title>
+	<style type="text/css">
+		* {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        
+        body {
+            padding: 20px;
+        }
+        
+        #container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border: 3px solid #333;
+            overflow: hidden;
+        }
+        
+        #list {
+            position: absolute;
+            z-index: 1;
+            width: 4200px;
+            height: 400px;
+        }
+        
+        #list img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+        
+        #buttons {
+            position: absolute;
+            left: 250px;
+            bottom: 20px;
+            z-index: 2;
+            height: 10px;
+            width: 100px;
+        }
+        
+        #buttons span {
+            float: left;
+            margin-right: 5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+        
+        #buttons .on {
+            background: orangered;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 180px;
+            z-index: 2;
+            display: none;
+            width: 40px;
+            height: 40px;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 39px;
+            text-align: center;
+            color: #fff;
+            background-color: RGBA(0, 0, 0, .3);
+            cursor: pointer;
+        }
+        
+        .arrow:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+        
+        #container:hover .arrow {
+            display: block;
+        }
+        
+        #prev {
+            left: 20px;
+        }
+        
+        #next {
+            right: 20px;
+        }
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function() {
+            var list = document.getElementById('list');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+
+            function animate(offset) {
+                //获取的是style.left，是相对左边获取距离，所以第一张图后style.left都为负值，
+                //且style.left获取的是字符串，需要用parseInt()取整转化为数字。
+                if(newLeft<-3000){
+     				 list.style.left = -600 + 'px';
+ 				}
+ 				if(newLeft>-600){
+    				list.style.left = -3000 + 'px';
+ 				}
+                var newLeft = parseInt(list.style.left) + offset;
+                list.style.left = newLeft + 'px';
+            }
+
+            prev.onclick = function() {             
+                animate(600);
+            }
+            next.onclick = function() {  
+                animate(-600);
+            }
+        }
+	</script>
+</head>
+
+<body>
+	 <div id="container">
+ 2         <div id="list" style="left: -600px;">
+ 3             <img src="img/timg (0).jpg" alt="1" />
+ 4             <img src="img/timg (1).jpg" alt="1" />
+ 5             <img src="img/timg (2).jpg" alt="2" />
+ 6             <img src="img/timg (3).jpg" alt="3" />
+ 7             <img src="img/timg (0).jpg" alt="4" />
+ 8             <img src="img/timg (0).jpg" alt="5" />
+ 9             <img src="img/timg (1).jpg" alt="5" />
+10         </div>
+11         <div id="buttons">
+12             <span index="1" class="on"></span>
+13             <span index="2"></span>
+14             <span index="3"></span>
+15             <span index="4"></span>
+16             <span index="5"></span>
+17         </div>
+18         <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+19         <a href="javascript:;" id="next" class="arrow">&gt;</a>
+20     </div>
+</body>
+
+</html>

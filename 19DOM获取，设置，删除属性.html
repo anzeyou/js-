@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="div1" style="width: 200px;height: 200px;background: red;"></div>
+		<div id="div2"></div>
+		
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var div2=document.getElementById('div2');
+			//获取属性
+			alert(div1.getAttribute('id'));
+			//设置属性：
+			div1.setAttribute('id','mdiv');
+			alert(div1.id);
+			//删除属性：
+			div1.removeAttribute('id');
+			alert(div1.id);
+			
+			
+			//获取属性：getAttribute('属性名')
+			//设置属性：setAttribute('属性名','新属性')
+			//删除属性：
+			
+		</script>
+	</body>
+</html>

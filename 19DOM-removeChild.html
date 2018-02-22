@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1111<a href="##">删除</a></li>
+			<li>2222<a href="##">删除</a></li>
+			<li>3333<a href="##">删除</a></li>
+			<li>4444<a href="##">删除</a></li>
+		</ul>
+		
+		
+		<script type="text/javascript">
+			var ul=document.getElementsByTagName('ul')[0];
+			var lis=ul.getElementsByTagName('li');
+			var als=ul.getElementsByTagName('a');
+			for(var i=0;i<als.length;i++){
+				als[i].onclick=function(){
+					ul.removeChild(this.parentNode);
+				}
+			}
+			
+		</script>
+	</body>
+</html>

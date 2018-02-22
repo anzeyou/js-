@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#banner{
+				width: 200px;
+				height: 300px;
+				/*padding: 3px;*/
+				border: 1px solid red;
+				overflow: hidden;
+				margin: 100px auto;
+				position: relative;
+			}
+			img{
+				width: 200px;
+				height: 300px;
+			}
+			#banner ul{
+				position: absolute;
+			}
+			ul li{
+				list-style: none;
+				float: left;
+				width: 200px;
+				height: 299px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="banner">
+			<ul>
+				<li><img src="img/timg (0).jpg"/></li>
+				<li><img src="img/timg (1).jpg"/></li>
+				<li><img src="img/timg (2).jpg"/></li>
+				<li><img src="img/timg (3).jpg"/></li>
+			</ul>
+		</div>
+		
+			
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oBanner=document.getElementById('banner')
+			var oUl=oBanner.getElementsByTagName('ul')[0];
+			var Oli=oUl.getElementsByTagName('li');
+			var timer=null;
+			var images=oUl.getElementsByTagName('img');
+			oUl.innerHTML+=oUl.innerHTML;
+			oUl.style.width=Oli[0].offsetWidth*Oli.length+'px';
+			
+			timer=setInterval(move,1000);
+			
+			oUl.onmouseover=function(){
+				clearInterval(timer);
+			}
+			
+			oUl.onmouseout=function(){
+				timer=setInterval(move,1000);
+			}
+			
+			function move(){
+				if(oUl.offsetLeft==-oUl.offsetWidth/2){
+					oUl.style.left=0+'px';
+					oUl.style.left=oUl.offsetLeft-200+'px';
+				}
+				else{
+					oUl.style.left=oUl.offsetLeft-200+'px';
+				}
+			}
+		</script>
+	</body>
+	
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="txt" value="10" />
+		
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var txt=document.getElementById('txt');
+				coutDown(txt.value);
+				
+				function coutDown(i){
+					setInterval(function(){
+						if(i>0){
+							i--;
+							txt.value=i;
+						}
+						
+					},1000)
+				}
+				
+			});
+		</script>
+	</body>
+</html>

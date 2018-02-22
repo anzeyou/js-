@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>11</li>
+			<li>78</li>
+			<li>45</li>
+			<li>23</li>
+			<li>99</li>
+		</ul>
+		
+		<button id="btn">点击排序</button>
+		
+		<script type="text/javascript">
+			var ul1=document.getElementById('ul1');
+			var lis=ul1.getElementsByTagName('li');
+			var btn=document.getElementById('btn');
+			
+			btn.onclick=function(){
+				
+				//数组的作用：将所有的li元素保存在数组中，使用sort方法
+				var arr=[];
+				for(var i=0;i<lis.length;i++){
+					arr.push(lis[i]);
+				}
+				
+				//arr数组中的内容是html元素（li），所以需要将value1和value2的innerHTML
+				//parseInt，得到number类型的数据
+				arr.sort(function(value1,value2){
+					var n1=parseInt(value1.innerHTML)
+					var n2=parseInt(value2.innerHTML)
+					return n1-n2;
+				})
+				
+				//利用appendChild方法，将arr数组中的每一项添加到ul1中，appendChild的特性是，先从父级元素中
+				//删除，再添加
+				for(var i=0;i<arr.length;i++){
+					ul1.appendChild(arr[i]);
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

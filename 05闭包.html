@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn1(name){
+				return function fn2(age){
+					console.log(`${name} is ${age} 岁了`);
+					console.log(name+" is "+age+" 岁了");
+					//这两种写法输出的结果相同
+				}
+			}
+			fn=fn1("an");
+			fn(18);
+			
+			
+			//闭包：在函数体内部，可以访问该函数中的变量的函数，并将结果return出去
+			//需要注意的是：每调用一次外部函数就会产生一个闭包，并且其中的变量不相同，且永远不被
+			//销毁，因为他被return给了调用外部函数的变量变成了全局的
+		</script>
+	</body>
+</html>

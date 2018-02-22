@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//例1：
+			var name="an";
+			var people={
+				name:"ze",
+				sayName:function(){
+					console.log(this.name);
+				}
+			}
+			var sayname=people.sayName;
+			function sayName(){
+				console.log(this.name);
+			}
+			sayName();//an
+			people.sayName();//ze
+			sayname();//an
+			
+			
+			//例2：
+			var arr=[];
+			for(var i=0;i<3;i++){
+				arr[i]=function(){
+					console.log(this);
+				}
+			}
+			var fn=arr[0];
+			//上面的语句就是将arr[0]对应的function(){consle.log(this)}赋值给fn
+			fn();//fn中对应的this指向window
+			
+			
+			
+			
+			
+			//总结：
+			//永远记住一句话：方法属于谁，this就指向谁
+		</script>
+	</body>
+</html>

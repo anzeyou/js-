@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var json={a:1,b:2,c:3}
+			var arr=[4,5,6];
+			
+			//1.下标--json下标是字符串  数组下标是数字
+			console.log(json.a);//1--相当于json["a"]
+			console.log(arr[0]);//4
+			//2.长度length
+			console.log(json.length);//undefined--json没有长度
+			console.log(arr.length);//3
+			//3.循环
+			//数组--方式1：
+			for(var i=0;i<arr.length;i++){
+				alert(arr[i]);
+			}
+			//数组--方式2：
+			for(var i in arr){
+				alert(arr[i]);
+			}
+			//json中--只能使用for in 循环，因为他没有length属性：
+			for(var j in json){
+				alert(json[j]);
+			}
+			
+			
+			//总结：
+			//数组中的循环最好使用含length
+			//json循环使用for in 
+		</script>
+	</body>
+</html>

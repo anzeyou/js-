@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[1,2,3,4];
+			
+//			arr.push(5);
+//			alert(arr);
+
+//			arr.pop(5);
+//			alert(arr);
+
+//			arr.unshift(9);
+//			alert(arr);
+
+//			arr.shift();
+//			alert(arr);
+
+//			arr.splice(2,0,5,6);
+//			alert(arr);
+
+//			alert(arr.slice(1));
+
+//			arr.reverse();
+//			alert(arr);
+
+//			alert(arr.join('!'));
+//			alert(arr);
+			
+//			var arr2=[5,6,7,8];
+//			alert(arr.concat(arr2));	
+
+
+			//下面的sort方法是重点
+			//sort是对字符串进行排序的
+//			var arr1=['an','ze',"you"];
+//			alert(arr1.sort());
+			
+//			var arr3=[1,2,10,3,5,18];
+//			alert(arr3.sort());//结果：1,10,18,2,3,5
+
+			//正确排序的顺序：
+			var arr3=[1,2,10,3,3,5,18];
+			alert(arr3.sort(function(value1,value2){
+				return value1-value2;
+			}))
+			
+			
+			
+			
+			
+			
+			
+			
+			//数组方法：
+			//push()--末尾添加
+			//unshift()--首位添加
+			//pop()--末尾删除
+			//shift()--首位删除
+			//concat()--数组连接
+			//splice()--数组中间添加或删除
+			//slice()--截取片段
+			//join()--分隔数组
+			//reverse()--数组倒序
+			//sort()--排序
+			
+			//以上数组方法涉及到删除的：返回删除项
+			//除slice方法和concat方法之外，其余方法都会改变原数组
+			
+			
+		</script>
+	</body>
+</html>

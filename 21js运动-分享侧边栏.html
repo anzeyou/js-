@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				width: 100px;
+				height: 200px;
+				background: red;
+				position: absolute;
+				left: -100px;
+			}
+			#box{
+				width: 20px;
+				height: 70px;
+				background: black;
+				position: absolute;
+				top: 65px;
+				right: -20px;
+				color: #fff;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1">
+			<div id="box">分享</div>
+		</div>
+		
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var div1=document.getElementById('div1');
+			var timer=null;
+			
+			div1.onmouseout=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(div1.offsetLeft<=-100){
+						clearInterval(timer);
+						
+					}
+					else{
+						div1.style.left=div1.offsetLeft-10+"px";
+					}
+				},30)
+			}
+			
+			div1.onmouseover=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(div1.offsetLeft>=0){
+						clearInterval(timer);
+					}
+					else{
+						div1.style.left=div1.offsetLeft+10+"px";
+					}
+				},30)
+			}
+			
+		</script>
+	</body>
+	
+</html>

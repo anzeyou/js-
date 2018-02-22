@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			a{
+				text-decoration: none;
+			}
+			a:hover{color: red;}
+			#caidan a{
+				color: #aaa;
+			}
+			ul li{
+				list-style: none;
+			}
+			#list{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="page">
+			<ul id="caidan">
+				<li>
+					<a href="#">菜单</a>
+				</li>
+			</ul>
+			<ul id="list">
+				<li><a href="#">主页</a></li>
+				<li><a href="#">客服</a></li>
+				<li><a href="#">电话</a></li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			let caidan=document.getElementById("caidan");
+			let list=document.getElementById("list");
+			caidan.onclick=function(){
+				if(list.style.display=="block"){
+					list.style.display="none";
+				}
+				else{
+					list.style.display="block";
+				}
+			}
+		</script>
+	</body>
+</html>

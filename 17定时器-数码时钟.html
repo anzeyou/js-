@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="t1" value="00" />:
+		<input type="text" id="t2" value="00" />:
+		<input type="text" id="t3" value="00"/>
+		
+
+		<script type="text/javascript">
+			
+			var t1=document.getElementById("t1");
+			var t2=document.getElementById("t2");
+			var t3=document.getElementById("t3");
+				setInterval(show,1000)
+				//保证页面刚打开就是系统时间
+				show();
+				
+				function show(){
+					//下面的这句话放到里面就可实现页面的动态变化，若放到外面，每次刷新页面
+					//时间才会变化
+					var odate=new Date();
+					t1.value=odate.getHours();
+					t2.value=odate.getMinutes();
+					t3.value=odate.getSeconds();
+				}
+		</script>
+	</body>
+</html>

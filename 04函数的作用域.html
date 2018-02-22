@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//例1：
+//			var a=1;
+//			function fn1(){
+//				function fn2(){
+//					console.log(a);
+//				}
+//				var a=2;
+//				return fn2;
+//			}
+//			var fn=fn1();
+//			fn();
+
+			//整理
+//			var a=1;
+//			var fn;
+//			function fn1(){
+//				var a;
+//				function fn2(){
+//					console.log(a);
+//				}
+//				a=2;
+//				return fn2;
+//			}
+//			fn=fn1();
+//			fn();//1--正确结果2？？
+			//结果解析：
+			//1.
+			//函数fn2是定义在fn1中的，函数fn1中有变量a，此时在函数fn2中输出的a代表的是fn1
+			//中的a，那么为什么它不找全局中的a呢？那是因为，首先它会在当前作用域中即fn2自己的作用域寻找a，他自己
+			//内部没有，继续向上寻找，此时他发现fn1中有a，所以输出的是fn1中的a而不是全局作用域中的a
+			//2.至于fn1中a=2，在function fn2(){...}的下面，关于a的声明在其上面，那么为什么fn2的输出结果不是
+		    //undefined呢，因为，fn2的运行结果的输出是在fn1运行之后，将他的运行结果赋值给fn，所以此时的a=2
+			
+			
+			
+			
+			//例2：
+//			var a=1;
+//			function fn1(){
+//				var a=2;
+//				return fn2();
+//			}
+//			function fn2(){
+//				console.log(a);
+//			}
+//			var fn=fn1();
+//			fn();
+
+			//先整理顺序
+//			var a=1;
+//			var fn;
+//			function fn1(){
+//				var a=2;
+//				return fn2;
+//			}
+//			function fn2(){
+//				console.log(a);
+//			}
+//			fn=fn1();
+//			fn();//1--正确结果：1
+			
+			
+			
+		</script>
+	</body>
+</html>

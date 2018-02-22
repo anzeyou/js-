@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{
+				height: 2000px;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				right: 0px;
+				bottom: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1"></div>
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var timer=null;
+			
+			window.onscroll=function(){
+				//获取鼠标滚动的距离
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				//div1的top就是文档高度-div1.offsetHeight，最后不要忘记单位
+				div1.style.top=document.documentElement.clientHeight-div1.offsetHeight+scrollTop+'px';
+			}
+			
+		</script>
+	</body>
+</html>

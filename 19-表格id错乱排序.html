@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 500px;
+				text-align: center;
+				margin: 50px auto;
+			}
+			#top{
+				width: 500px;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="top">
+			<input type="button" value="点击排序" id="btn"/>
+		</div>
+		
+		<table border="1px solid #ddd" id="tab">
+			<thead>
+				<td>ID</td>
+				<td>姓名</td>				
+				<td>年龄</td>				
+			</thead>
+			<tbody>
+				<tr>
+					<td>4</td>
+					<td>张五</td>				
+					<td>14</td>				
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>张三</td>				
+					<td>11</td>				
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>王五</td>				
+					<td>13</td>				
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>李四</td>				
+					<td>12</td>				
+				</tr>
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			var tab=document.getElementById('tab');
+			var btn=document.getElementById('btn');
+			//所有的行数存起来
+			var mtr=tab.tBodies[0].rows.length;
+			
+			btn.onclick=function(){
+				
+				//将每一个tr添加到数组arr中--目的：使用sort方法
+				var arr=[];
+				for(var i=0;i<mtr;i++){
+					arr.push(tab.tBodies[0].rows[i]);
+				};
+				
+				//对数组中的元素进行排序
+				arr.sort(function(val1,val2){
+					//获取每一行的id值进行比较
+					var value1=parseInt(val1.cells[0].innerHTML);
+					var value2=parseInt(val2.cells[0].innerHTML);
+					return value1-value2;
+				});
+				
+				//将排序好的每一行appendChild到表格中				
+				for(var i=0;i<arr.length;i++){
+					tab.tBodies[0].appendChild(arr[i]);
+				}
+				
+			}
+			
+			//将表格中的行进行重排序，就把每一行追加到数组arr中，再比较行中的某个td，最后将数组
+			//arr appendChild到表格中就可以了
+			
+		</script>
+		
+	</body>
+</html>

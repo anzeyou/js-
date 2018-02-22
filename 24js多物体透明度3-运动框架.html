@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background: red;
+				float: left;
+				margin: 20px;
+				opacity: 0.3;
+				/*ie 使用filter属性*/
+				filter: alpha:(opacity:30);
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName('div');
+			var speed=0.1;
+			
+			for(var i=0;i<divs.length;i++){
+				divs[i].opa=0.3
+				divs[i].timer=null;
+				
+				divs[i].onmouseover=function(){
+					var that=this;
+					move(that,1);
+				};
+				
+				divs[i].onmouseout=function(){
+					var that=this;
+					move(that,0.3);
+				}
+			};
+			
+			
+			//运动框架
+			function move(obj,target){
+				clearInterval(obj.timer);
+				obj.timer=setInterval(function(){
+					if(obj.style.opacity==target){
+						clearInterval(obj.timer);						
+					}else{
+						if(target-obj.style.opacity>0){
+							speed=0.1
+						}else{
+							speed=-0.1
+						}
+						obj.opa+=speed;
+						obj.style.opacity=obj.opa;
+					}
+				},30)
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background: red;
+				opacity: 0.3;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1"></div>
+		
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var timer=null;
+			var opa=0.3;
+			
+			div1.onmouseover=function(){
+				show(1);
+			};
+			
+			div1.onmouseout=function(){
+				show(0.3);
+			}
+			
+			//运动框架
+			function show(target){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(div1.style.opacity==target){
+						clearInterval(timer);
+					}else{
+						if(div1.style.opacity<target){
+							var speed=0.1;
+						}else{
+							var speed=-0.1
+						}
+						div1.style.opacity=opa+=speed;
+					}
+				},30)
+			}
+		</script>
+	</body>
+</html>

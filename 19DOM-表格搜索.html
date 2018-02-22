@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 500px;
+				margin: 50px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt" />
+		<input type="button" value="搜索" id="btn"/>
+		
+		<table border="1px" id="tab1">
+			<thead>
+				<td>ID</td>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>a</td>
+					<td>18</td>
+					<td>女</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>b</td>
+					<td>12</td>
+					<td>女</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>c</td>
+					<td>17</td>
+					<td>男</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>d</td>
+					<td>11</td>
+					<td>男</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>E</td>
+					<td>14</td>
+					<td>女</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>张三</td>
+					<td>12</td>
+					<td>女</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>张思</td>
+					<td>14</td>
+					<td>男</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			var btn=document.getElementById('btn');
+			var txt=document.getElementById('txt');
+			var tab=document.getElementById('tab1');
+			btn.onclick=function(){
+				
+				
+				//忽略大小写搜索--将搜索框的内容和表格中的内容都转换为大写或小写：
+//				for(var i=0;i<tab.tBodies[0].rows.length;i++){
+//				var sTab=tab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+//				var sTxt=txt.value.toLowerCase()
+//					if(sTab==sTxt){
+//						tab.tBodies[0].rows[i].style.background='red';
+//					}
+//					else{
+//						tab.tBodies[0].rows[i].style.background='';
+//					}
+//				}
+				
+				//模糊搜索--search()：
+//				for(var i=0;i<tab.tBodies[0].rows.length;i++){
+//					var sTab=tab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+//					var sTxt=txt.value.toLowerCase()
+//					if(sTab.search(sTxt)!=-1){
+//						tab.tBodies[0].rows[i].style.background='red';
+//					}
+//					else{
+//						tab.tBodies[0].rows[i].style.background='';
+//					}
+//				}
+
+				//多关键词搜索split()：
+				for(var i=0;i<tab.tBodies[0].rows.length;i++){
+					var sTab=tab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+					var sTxt=txt.value.toLowerCase();
+					
+					var arr=sTxt.split(" ");
+					//下面的语句不能忘掉，因为当第二次输入关键词时，表格之前的背景色还存在
+					//会导致错误
+					tab.tBodies[0].rows[i].style.background='';
+					
+					for(var j=0;j<arr.length;j++){
+						if(sTab.search(arr[j])!=-1){
+							tab.tBodies[0].rows[i].style.background='red';
+						}
+						
+						//多关键词搜索不能使用下面的esle语句，因为假如找到了第一个关键词对应的行
+						//颜色已经改变，会找第二个关键词，第二个关键词在已经变色的行中没有的话，
+						//下面的else语句会将这一行变的背景变为空的，所以会出现，只有第二个关键词
+						//搜索到才会变色的情况，其实是第一行在变色以后快速被置空了，人们肉眼看不到
+//						else{
+//							tab.tBodies[0].rows[i].style.background='';
+//						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

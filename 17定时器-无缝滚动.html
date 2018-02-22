@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			img{
+				width: 200px;
+			}
+			#div1{
+				width: 801px;
+				height: 299px;
+				overflow: hidden;
+				margin: 100px auto;
+				position: relative;
+			}
+			#div1 ul{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#div1 ul li{
+				list-style: none;
+				float: left;
+				width: 200px;
+				height: 299px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<ul>
+				<li><img src="img/timg (0).jpg"/></li>
+				<li><img src="img/timg (1).jpg"/></li>
+				<li><img src="img/timg (2).jpg"/></li>
+				<li><img src="img/timg (3).jpg"/></li>
+			</ul>
+		</div>		
+		<div class="as">
+			<a id="as1" href="##">向左走</a>
+			<a id="as2" href="##">向右走</a>
+		</div>	
+		
+		<script type="text/javascript">
+			var div1=document.getElementById("div1");
+			var ul=div1.getElementsByTagName("ul")[0];
+			var li=ul.getElementsByTagName("li");
+			var as1=document.getElementById("as1");
+			var as2=document.getElementById("as2");
+			var speed=-2;
+			var timer=null;
+			ul.innerHTML+=ul.innerHTML;
+			
+			//li[0].offsetWidth--不能写成li[0].width
+			ul.style.width=li[0].offsetWidth*li.length+"px";
+			//开启定时器
+			timer=setInterval(show,30);
+			
+			//图片滚动方向
+			as1.onclick=function(){
+				speed=-2;
+			}
+			as2.onclick=function(){
+				speed=2;
+			}
+			
+			//鼠标移入暂停：
+			div1.onmouseover=function(){
+				clearInterval(timer);
+			}
+			div1.onmouseout=function(){
+				timer=setInterval(show,30);
+			}
+			
+			
+			function show(){
+				if(ul.offsetLeft<-ul.offsetWidth/2){
+					ul.style.left=0+"px";
+				}
+				if(ul.offsetLeft>0){
+					ul.style.left=-ul.offsetWidth/2+"px";
+				}
+				ul.style.left=ul.offsetLeft+speed+"px";
+			}
+		</script>
+	</body>
+</html>

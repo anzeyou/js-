@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			div{
+				width: 100px;
+				height: 50px;
+				background: red;
+				margin: 10px;
+			}
+			#box{
+				width: 1px;
+				height: 300px;
+				background: black;
+				position: absolute;			
+				left: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName('div');
+//			var timer=null;
+			
+			for(var i=0;i<divs.length;i++){
+				//给每一个div添加一个timer，每次清除都是清除自己的timer，这样就不会互相影响了
+				divs[i].timer=null;
+				divs[i].onmouseover=function(){
+					var that=this;
+					clearInterval(that.timer);
+					that.timer=setInterval(function(){
+						if(that.offsetWidth==300){
+							clearInterval(that.timer);
+						}
+						else{
+							var speed=(300-that.offsetWidth)/6;
+							speed=speed>0?Math.ceil(speed):Math.floor(speed);
+							that.style.width=that.offsetWidth+speed+'px';
+						}
+					},30)
+				};
+				
+				divs[i].onmouseout=function(){
+					var that=this;
+					clearInterval(that.timer);
+					that.timer=setInterval(function(){
+						if(that.offsetWidth==100){
+							clearInterval(that.timer);
+						}
+						else{
+							var speed=(100-that.offsetWidth)/6;
+							speed=speed>0?Math.ceil(speed):Math.floor(speed);
+							that.style.width=that.offsetWidth+speed+'px';
+						}
+					},30)
+				}
+				
+			}
+			//给每一个div添加一个定时器timer属性，这样各个div的运动就互不影响
+		</script>
+	</body>
+</html>

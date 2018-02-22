@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			#box{
+				width: 1px;
+				height: 300px;
+				background: black;
+				position: absolute;
+				left: 300px;
+			}
+			#btn{
+				margin-top: 103px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1"></div>
+		<div id="box"></div>
+		<button id="btn">开始运动</button>
+		<button id="btn2">往回运动</button>
+		
+		
+		
+		<script type="text/javascript">
+			var btn=document.getElementById('btn');
+			var div1=document.getElementById('div1');
+			var timer=null;
+			var speed=10;
+			
+			btn.onclick=function(){
+				move(300);
+			};
+			btn2.onclick=function(){
+				move(0);
+			}
+			
+			function move(target){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(div1.offsetLeft==target){
+						clearInterval(timer);
+					}
+					else{
+						//根据div1的当前位置判断速度的正负
+						var speed=(target-div1.offsetLeft)/20;
+						//涉及到变速运动就要取整
+						speed=speed>0?Math.ceil(speed):Math.floor(speed);
+						div1.style.left=div1.offsetLeft+speed+"px";
+						document.title=speed;
+					}
+					
+				},30)
+			}
+		</script>
+	</body>
+</html>

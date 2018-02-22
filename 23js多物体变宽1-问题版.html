@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			div{
+				width: 100px;
+				height: 50px;
+				background: red;
+				margin: 10px;
+			}
+			#box{
+				width: 1px;
+				height: 300px;
+				background: black;
+				position: absolute;			
+				left: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName('div');
+			var timer=null;
+			
+			for(var i=0;i<divs.length;i++){
+				divs[i].onmouseover=function(){
+					var that=this;
+					clearInterval(timer);
+					timer=setInterval(function(){
+						if(that.offsetWidth==300){
+							clearInterval(timer);
+						}
+						else{
+							var speed=(300-that.offsetWidth)/8;
+							speed=speed>0?Math.ceil(speed):Math.floor(speed);
+							that.style.width=that.offsetWidth+speed+'px';
+						}
+					},30)
+				};
+				
+				divs[i].onmouseout=function(){
+					var that=this;
+					clearInterval(timer);
+					timer=setInterval(function(){
+						if(that.offsetWidth==100){
+							clearInterval(timer);
+						}
+						else{
+							var speed=(100-that.offsetWidth)/8;
+							speed=speed>0?Math.ceil(speed):Math.floor(speed);
+							that.style.width=that.offsetWidth+speed+'px';
+						}
+					},30)
+				}
+				
+			}
+			
+			
+			
+			//for循环中错误的版本：
+//			for(var i=0;i<divs.length;i++){
+//				divs[i].onmouseover=function(){
+//					clearInterval(timer);
+//					timer=setInterval(function(){
+//						//下面用this是不正确的，因为鼠标移入每隔30豪秒回开一次定时器，
+//						//系统不知道this指向的是谁
+//						if(this.offsetWidth==300){
+//							clearInterval(timer);
+//						}
+//						else{
+//							this.style.width=200+'px';
+//						}
+//					},1000)
+//				}
+//			}
+
+			//在这个页面中出现的问题就是:所有的div公用同一个定时器，当某一个div运动没有完成的
+			//时候，移入另一个div，就会造成前一个div的卡顿
+		</script>
+	</body>
+</html>

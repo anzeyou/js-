@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{height: 2000px;}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				right: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var timer=null;
+			
+			//鼠标滚动之前div1的当前位置
+			var dw=(document.documentElement.clientHeight-div1.offsetHeight)/2;
+			div1.style.top=dw+'px';
+			
+			window.onscroll=function(){
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				//目标点的位置，就是div1当前的位置+鼠标滚动的位置
+				move(dw+scrollTop);
+			}
+			
+			//运动框架
+			function move(target){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(div1.offsetTop==target){
+						clearInterval(timer);
+					}
+					else{
+						var speed=(target-div1.offsetTop)/4;
+						speed=speed>0?Math.ceil(speed):Math.floor(speed);
+						div1.style.top=div1.offsetTop+speed+'px';
+					}
+				},30);
+			}
+			
+		</script>
+	</body>
+</html>

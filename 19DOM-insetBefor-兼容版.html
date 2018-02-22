@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="t1"/>
+		<ul>
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+		</ul>
+		<input type="button" value="点击添加" id="btn"/>
+		
+		<script type="text/javascript">
+			var btn=document.getElementById("btn");
+			var ul=document.getElementsByTagName('ul')[0];
+			var t1=document.getElementById('t1');
+			var lis=document.getElementsByTagName('li');
+			btn.onclick=function(){
+				var nli=document.createElement('li');
+				nli.innerHTML=t1.value;
+				if(lis.length>0){
+					ul.insertBefore(nli,lis[0]);
+				}
+				else{
+					ul.appendChild(nli);
+					
+				}
+				t1.value='';
+			}
+			
+			
+			//总结：低版本IE下，使用insetBefore时，当前元素的内容若为空，会报错
+			//所以长度为0时，需要使用appendChild添加元素
+		</script>
+	</body>
+</html>

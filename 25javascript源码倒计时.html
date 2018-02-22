@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" value="10" />
+		<button id="btn" style="display: none;">按钮点击</button>
+		
+		
+		<!--<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>-->
+		
+		<script type="text/javascript">
+			window.onload=function(){
+				var txt=document.getElementById('txt');
+				var btn=document.getElementById('btn');
+				
+				countDown(txt.value);
+				
+				function countDown(i){
+					setInterval(function(){
+						if(i>0){
+							i--;
+							document.getElementById('txt').value=i;
+						}else{
+							txt.style.display='none';
+							btn.style.display='block';
+						}
+					},1000)
+				}
+			}
+		</script>
+	</body>
+</html>

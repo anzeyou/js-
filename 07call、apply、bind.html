@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var cat={
+//				"name":"cat1",
+//				"age":1,
+//				"jiao":function(){
+//					console.log(`${this.name} 的年龄是 ${this.age}`);
+//				}
+//			}
+//			//正常情况下：this是指向cat
+//			cat.jiao();//输出--cat1的年龄是1
+//			
+//			//call方法改变this指向
+//			//先声明一个dog对象，假如说dog对象没有cat对象中的jiao方法，但是想让他输出，所以使用
+//			//call方法将执行上下文即this指向dog对象
+//			dog={name:"dog1",age:'2'}
+//			//没有参数时，call和apply没有区别
+//			cat.jiao.call(dog);
+//			cat.jiao.apply(dog);
+			
+			
+			
+			//有参数情况下：
+//			var cat={
+//				"name":"cat1",
+//				"age":1,
+//				//没有参数的情况下
+//				"jiao":function(a,b){
+//					console.log(`${this.name} 的年龄是 ${this.age} ${a} ${b}`);
+//				}
+//			}
+//			cat.jiao("我是","cat");
+//			dog={name:"dog1",age:'2'}
+//			//第一个参数：this指向的新对象，第二个参数传递的参数
+//			cat.jiao.call(dog,"我是","dog");
+//			cat.jiao.apply(dog,["我是",'dog']);
+			
+			
+			
+			//bind函数
+			var cat={
+				"name":"cat1",
+				"age":1,
+				"jiao":function(a,b){
+					console.log(`${this.name} 的年龄是 ${this.age} ${a} ${b}`);
+				}
+			}
+//			cat.jiao("我是","cat");
+			dog={name:"dog1",age:'2'}
+			//传参不用数组方式
+			var ndog=cat.jiao.bind(dog,"hello",'world');			
+			//bind改变this指向，但是不会自动执行函数，所以得调用才能显示
+			ndog();
+			
+			
+			
+			
+			
+			
+			//总结：
+			//apply和call的作用就是改变对象的执行上下文（执行上下文就是方法中this的指向）也叫
+			//执行环境
+			//这里需要注意的是：在没有参数的情况下，call和apply的用法是相同的
+			//call方法基本用法：fn.call(obj,...)--将函数fn的执行上下文（this指向）指向obj
+			//这个对象
+			//apply基本用法：fn.apply(obj,[...])--第二个参数必须是数组或类数组
+			//bind函数改变this指向中，会产生一个新的函数指向设定的对象，但是不会自动执行，需要调用才能执行其函数
+		</script>
+	</body>
+</html>

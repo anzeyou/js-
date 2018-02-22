@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background: red;
+				opacity: 0.3;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var opa=0.3;
+			var timer=null;
+			
+			div1.onmouseover=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					//下面的if中的语句不能写opa==1，因为opa只是一个中间变量
+					if(div1.style.opacity==1){
+						clearInterval(timer);
+					}
+					else{
+						opa+=0.1;
+						div1.style.opacity=opa;
+					}
+				},30)
+			};
+			
+			div1.onmouseout=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					//下面的if中的语句不能写opa==1，因为opa只是一个中间变量
+					if(div1.style.opacity==0.3){
+						clearInterval(timer);
+					}
+					else{
+						opa-=0.1;
+						div1.style.opacity=opa;
+					}
+				},30)
+			}
+		</script>
+	</body>
+</html>
+
+

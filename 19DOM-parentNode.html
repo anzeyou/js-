@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			<div>阿凡达<a href="##">隐藏</a></div>
+			<div>事实上<a href="##">隐藏</a></div>
+			<div>踩踩踩<a href="##">隐藏</a></div>
+			<div>啊啊啊<a href="##">隐藏</a></div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var a=document.getElementsByTagName("a");
+			for(var i=0;i<a.length;i++){
+				a[i].onclick=function(){
+					this.parentNode.style.display='none';
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{
+				height: 2000px;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				right: 0px;
+				bottom: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1"></div>
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var timer=null;
+			
+			window.onscroll=function(){
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				//当鼠标滚动，div1的位置就是当前的位置加上鼠标滚动的位置
+//				div1.style.top=document.documentElement.clientHeight-div1.offsetHeight+scrollTop+'px';
+				move(document.documentElement.clientHeight-div1.offsetHeight+scrollTop);
+			}
+			
+			function move(target){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(div1.offsetTop==target){
+						clearInterval(timer);
+					}else{
+						speed=(target-div1.offsetTop)/4;
+						speed=speed>0?Math.ceil(speed):Math.floor(speed);
+						div1.style.top=div1.offsetTop+speed+'px';
+					}
+				},30);
+			}
+			
+		</script>
+	</body>
+</html>

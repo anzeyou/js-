@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			function getStyle(obj,name){
+				//IE
+				if(obj.currentStyle){
+					//注意两种方法的区别
+					alert(obj.currentStyle[name]);
+				}
+				//FF
+				else{
+					alert(getComputedStyle(obj,false)[name]);
+				}
+			}
+			var div1=document.getElementById("div1")
+			getStyle(div1,'width');
+		</script>
+	</body>
+</html>

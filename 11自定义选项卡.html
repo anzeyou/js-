@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 div{
+				width: 200px;
+				height: 200px;
+				background: #ddd;
+				display: none;
+			}
+			.active{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<input class="active" type="button" value="新闻"/>
+			<input type="button" value="国际"/>
+			<input type="button" value="娱乐"/>
+			<input type="button" value="八卦"/>
+			
+			<div style="display: block;">111</div>
+			<div>222</div>
+			<div>333</div>
+			<div>444</div>
+		</div>	
+	
+		<script type="text/javascript">
+			window.onload=function(){
+				var div1=document.getElementById("div1");
+				var butts=div1.getElementsByTagName("input");
+				var divs=div1.getElementsByTagName("div");
+				
+				for(var i=0;i<butts.length;i++){
+					butts[i].index=i;
+					butts[i].onclick=function(){
+						for(var j=0;j<butts.length;j++){
+							butts[j].className="";
+							divs[j].style.display='none';
+						}
+						this.className="active";
+						divs[this.index].style.display='block';
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

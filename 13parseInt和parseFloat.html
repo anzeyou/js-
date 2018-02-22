@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="t1" type="text" />
+		<input id="t2" type="text" />
+		<input id="btn" type="button" value="点击相加"/>
+		
+		<script type="text/javascript">
+			var t1=document.getElementById("t1");
+			var t2=document.getElementById("t2");
+			var btn=document.getElementById("btn");
+			
+			btn.onclick=function(){
+				//下面得到的是字符串类型的
+//				alert(t1.value+t2.value);
+				alert(parseInt(t1.value)+parseInt(t2.value));
+			}
+			
+			//parseFloat的用法和parseInt相同
+			
+			
+			//总结：input框中的value是字符串，即使输入的是数字相加所以需要使用parseInt
+		</script>
+	</body>
+</html>

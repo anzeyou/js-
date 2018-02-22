@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" /><br />
+			<button id="all">全选</button>
+			<button id="back">反选</button>
+			<button id="nall">全不选</button>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var div=document.getElementById("div1");
+			var checks=div.getElementsByTagName("input");
+			var all=document.getElementById("all");
+			var back=document.getElementById("back");
+			var nall=document.getElementById("nall");
+			
+			all.onclick=function(){
+				for(var i=0;i<checks.length;i++){
+					checks[i].checked="checked";
+				}
+			};
+			nall.onclick=function(){
+				for(var i=0;i<checks.length;i++){
+					checks[i].checked="";
+				}
+			};
+			back.onclick=function(){
+				for(var i=0;i<checks.length;i++){
+					//下面的true和false都不能加'',加了代表字符串
+					if(checks[i].checked==true){
+						checks[i].checked=false;
+					}
+					else{
+						checks[i].checked=true;
+					}
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

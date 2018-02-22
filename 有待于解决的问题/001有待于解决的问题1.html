@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var app={
+				fn1(){
+					setTimeout(function(){
+						console.log(this);
+					},10)
+				},//this指向window
+				fn2(){
+					setTimeout(()=>{
+						console.log(this);
+						
+					},20)
+				},//this指向app
+				fn3(){
+					setTimeout((function(){
+						console.log(this);
+					}).bind(this),30);
+				},//this指向app
+				fn4:()=>{
+					setTimeout(()=>{
+						console.log(this);
+					},40)
+				}//this指向window
+
+				
+				//上面的程序分析过程
+//				fn1(){
+//					//程序过10毫秒这个函数
+//					(function(){
+//						console.log(this);
+//					})()
+//				},
+//				fn2(){
+//					//程序过20毫秒执行下面的函数
+//					(()=>{
+//						console.log(this);
+//					})()
+//				},
+//				fn3(){
+//					//程序过30毫秒执行下面的函数：
+//					(function(){
+//						console.log(this);
+//					}).bind(this)()
+//				},
+//				fn4:()=>{
+//					//程序过40毫秒执行下面的函数：
+//					(()=>{
+//						console.log(this);
+//					})()
+//				}
+
+
+
+			}
+			app.fn1();
+			app.fn2();
+			app.fn3();
+			app.fn4();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//例1：
+//			let app={
+//				fn1:function(a){
+//					console.log(this);
+//				},
+//				fn2(a){
+//					console.log(this);
+//				},
+//				//箭头函数没有this上下文，所以他指向最近的作用域上下文--即window
+//				fn3:(a)=>{
+//					console.log(this);
+//				}
+//			}
+//			
+//			//fn1和fn2是等价的，下面的fn3中的this指向的是window
+//			app.fn1();
+//			app.fn2();
+//			app.fn3();
+			
+			
+			//例2：
+			var app={
+				init(){
+					var menu={
+						init:()=>{
+						//自己的分析：箭头函数没有执行上下文，所以会向上找一个有上下文的某个东西，此时找到了
+						//init这个函数，这个函数中的执行上下文指向app这个对象
+							console.log(this);
+						},
+						bind(){
+							console.log(this);
+						}
+					}
+					menu.init();					
+				}
+			}
+			app.init();
+			
+			
+			
+			
+			
+			//总结：
+			//1.箭头函数作为函数的一种形式,对于this的处理和普通函数有所区别,其没有自己的this上下文,
+			//也就是说通过bind/call/apply函数方法设置this值时无效的，会被忽略
+			//2.因为箭头函数没有自己的this上下文，那么当它作为对象的方法函数运行时，this并不指向这个对象
+			//3.箭头函数的的函数体中出现的this在运行时绑定到最近的作用域上下文对象
+			//4.你可以认为箭头函数的this和调用者无关，只和其定义时所在的上下文相关
+			
+			//即当箭头函数作为对象的方法函数运行，this并不指向这个对象，指向的是最近的作用域上下文
+		</script>
+	</body>
+</html>

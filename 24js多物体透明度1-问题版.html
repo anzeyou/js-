@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background: red;
+				float: left;
+				margin: 20px;
+				opacity: 0.3;
+				/*ie 使用filter属性*/
+				filter: alpha:(opacity:30);
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName('div');
+			var opa=0.3
+			var speed=0.1;
+			
+			for(var i=0;i<divs.length;i++){
+				//每个div的定时器分开
+				divs[i].timer=null;
+				//每个div的opacity分开
+				divs[i].opa=0.3
+				
+				//鼠标移入事件
+				divs[i].onmouseover=function(){
+					var that=this;
+					clearInterval(that.timer);
+					that.timer=setInterval(function(){
+						if(that.style.opacity==1){
+							clearInterval(that.timer);
+						}else{
+							opa+=speed;
+							that.style.opacity=opa;
+						}
+					},300)
+				}
+				
+				//鼠标移出事件
+				divs[i].onmouseout=function(){
+					var that=this;
+					clearInterval(that.timer);
+					that.timer=setInterval(function(){
+						if(that.style.opacity==0.3){
+							clearInterval(that.timer);
+						}else{
+							opa-=speed;
+							that.style.opacity=opa;
+						}
+					},300)
+				}
+				
+			}
+		</script>
+	</body>
+</html>

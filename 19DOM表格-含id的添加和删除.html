@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 500px;
+				text-align: center;
+				margin: 50px auto;
+			}
+			#top{
+				width: 600px;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="top">
+			姓名：<input type="text" id="t1"/>
+			年龄：<input type="text" id="t2"/>
+			<input type="button" value="点击添加" id="btn"/>
+		</div>
+		
+		<table border="1px solid #ddd" id="tab">
+			<thead>
+				<td>ID</td>
+				<td>姓名</td>				
+				<td>年龄</td>				
+				<td>操作</td>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>张三</td>				
+					<td>11</td>				
+					<td><a href="##">删除</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>李四</td>				
+					<td>12</td>				
+					<td><a href="##">删除</a></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>王五</td>				
+					<td>13</td>				
+					<td><a href="##">删除</a></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>张五</td>				
+					<td>14</td>				
+					<td><a href="##">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			var t1=document.getElementById('t1');
+			var t2=document.getElementById('t2');
+			var btn=document.getElementById('btn');
+			var tab=document.getElementById('tab');
+			//避免重复，将id保存起来
+			var id=tab.tBodies[0].rows.length+1;
+			
+			btn.onclick=function(){
+				
+				//添加功能的实现				
+				var ntr=document.createElement('tr');
+				
+				var ntd=document.createElement('td');
+				ntd.innerHTML=id++;
+				ntr.appendChild(ntd);
+				
+				var ntd=document.createElement('td');
+				ntd.innerHTML=t1.value;
+				//不要忘记添加完一列要将这一列添加到这一行中
+				ntr.appendChild(ntd);
+				
+				var ntd=document.createElement('td');
+				ntd.innerHTML=t2.value;
+				ntr.appendChild(ntd);
+				
+				var ntd=document.createElement('td');
+				ntd.innerHTML=' <a href="##">删除</a> ';
+				ntr.appendChild(ntd);
+				
+				tab.appendChild(ntr);
+				
+				//删除功能的实现--删除新增的每一行：
+				//获取每一行中的a
+				var nas=ntr.getElementsByTagName('a')[0];
+				nas.onclick=function(){
+					tab.removeChild(this.parentNode.parentNode);
+				}
+			}
+			
+			var alla=tab.getElementsByTagName('a');
+			for(var i=0;i<alla.length;i++){
+				alla[i].onclick=function(){
+					//tBodies不能忘
+					tab.tBodies[0].removeChild(this.parentNode.parentNode)
+				}
+			}
+			
+			//id是唯一的，当表格的一行元素被删除，其对应的id也不能重复出现，
+			//涉及到表格就要像tBodies--不能忘
+		</script>
+	</body>
+</html>

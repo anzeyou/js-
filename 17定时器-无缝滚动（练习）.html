@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			img{
+				width: 200px;
+			}
+			#box{	
+				width: 800px;
+				height: 300px;
+				background: red;
+				margin: 100px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			#box ul{
+				position: absolute;
+			}
+			#box ul li{
+				list-style: none;
+				float: left;
+				width: 200px;
+				height: 299px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="as">
+			<a href="##" id="asl">向左</a>
+			<a href="##" id="asr">向右</a>
+		</div>
+		<div id="box">
+			<ul>
+				<li><img src="img/timg (0).jpg"/></li>
+				<li><img src="img/timg (1).jpg"/></li>
+				<li><img src="img/timg (2).jpg"/></li>
+				<li><img src="img/timg (3).jpg"/></li>
+			</ul>
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var box=document.getElementById("box");
+			var ul=box.getElementsByTagName("ul")[0];
+			var lis=ul.getElementsByTagName("li");
+			var asl=document.getElementById("asl");
+			var asr=document.getElementById("asr");
+			var timer=null;
+			var speed=-2;
+			ul.innerHTML+=ul.innerHTML;
+			//设置ul宽度，让li不会掉下去
+			ul.style.width=lis[0].offsetWidth*lis.length+"px";
+			timer=setInterval(show,30)
+			
+			//移动方向
+			asl.onclick=function(){
+				speed=-2;
+			};
+			asr.onclick=function(){
+				speed=2;
+			};
+			
+			//悬停效果
+			box.onmouseover=function(){
+				clearInterval(timer);
+			};
+			box.onmouseout=function(){
+				timer=setInterval(show,30)
+			};
+			
+			
+			function show(){
+				if(ul.offsetLeft<-ul.offsetWidth/2){
+					ul.style.left=0+'px';
+				}
+				if(ul.offsetLeft>0){
+					ul.style.left=-ul.offsetWidth/2+"px";
+				}
+				ul.style.left=ul.offsetLeft+speed+"px";
+			}
+		</script>
+	</body>
+</html>

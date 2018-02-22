@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{height: 2000px;}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				right: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var timer=null;
+			
+			//鼠标滚动之前div1的当前位置
+			var dw=(document.documentElement.clientHeight-div1.offsetHeight)/2;
+			div1.style.top=dw+'px';
+			
+			window.onscroll=function(){
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				div1.style.top=dw+scrollTop+'px';
+			}
+			
+			//不使用变速运动的情况下，物体会一抖一抖的
+			
+		</script>
+	</body>
+</html>

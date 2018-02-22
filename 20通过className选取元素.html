@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li class="box">111</li>
+			<li>222</li>
+			<li class="box">333</li>
+			<li>444</li>
+			<li class="box">555</li>
+		</ul>
+		
+		
+		<script type="text/javascript">
+			var ul=document.getElementsByTagName("ul")[0];
+			//当初犯了一个错误，把下面的ul加上了""所以结果一直不对
+			var abox=getByClass(ul,'box');
+			for(var i=0;i<abox.length;i++){
+					abox[i].style.backgroundColor='red';
+			}
+			
+			
+			function getByClass(oParent,sClass){
+				//定义数组将符合class名称的元素保存起来
+				var arr=[];
+				//将所有的属于oParent的元素选出来
+				var aele=oParent.getElementsByTagName('*');//使用了*通配符--选取所有
+				for(var i=0;i<aele.length;i++){
+					if(aele[i].className==sClass){
+						arr.push(aele[i]);
+					}
+				}
+				return arr;
+			}
+		</script>
+	</body>
+</html>

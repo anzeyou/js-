@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#div1{
+				width: 100px;
+				height: 200px;
+				background: red;
+				position: absolute;
+				left: -100px;
+			}
+			#box{
+				width: 20px;
+				height: 70px;
+				background: black;
+				position: absolute;
+				top: 65px;
+				right: -20px;
+				color: #fff;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1">
+			<div id="box">分享</div>
+		</div>
+		
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var div1=document.getElementById('div1');
+			var timer=null;
+			
+			div1.onmouseout=function(){
+				show(-100);
+			}
+			
+			div1.onmouseover=function(){
+				show(0);
+			}
+			
+			//根据物体的offsetLeft和当前的目标点的位置，可以推断出速度的正负，所以只需要1个参数即可
+			function show(target){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(div1.offsetLeft==target){
+						clearInterval(timer);
+					}
+					else{
+						//由div1的当前位置和目标点的位置，判断速度的正负
+						if(div1.offsetLeft>target){
+							speed=-10;
+						}else{
+							speed=10;
+						}
+						div1.style.left=div1.offsetLeft+speed+"px";
+					}
+				},30)
+			}
+		</script>
+	</body>
+	
+</html>

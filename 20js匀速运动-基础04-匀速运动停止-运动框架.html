@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: px;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+			}
+			#box{
+				width: 1px;
+				height: 300px;
+				background: black;
+				position: absolute;
+				left: 300px;
+			}
+			#btn{
+				margin-top: 105px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="box"></div>
+		<button id="btn">点击运动</button>
+		
+		<script type="text/javascript">
+			var div1=document.getElementById('div1');
+			var btn=document.getElementById('btn');
+			var timer=null;
+			var target=300;
+			
+			btn.onclick=function(){
+				move(300);
+			}
+			
+			function move(target){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					//之前的程序中的匀速运动，下面利用的是物体当前位置>=300停止，否则目标点和每次的位移不能整除时，
+					//就会造成物体一直运动下去
+					if(div1.offsetLeft==target){
+						clearInterval(timer);
+					}else{
+						//匀速运动中目标点和位移（速度）不能整除时，取当前位置和目标点的差值的绝对值若<位移（速度）
+						//停止定时器，并且让物体的位置=目标点的位置（运动很快，人的肉眼不能识别出错误）
+						if(Math.abs(div1.offsetLeft-target)<9){
+							clearInterval(timer);
+							div1.style.left=300+'px';
+						}
+						else{
+							div1.style.left=div1.offsetLeft+9+'px';
+						}
+					}
+				},30)
+			}
+		</script>
+	</body>
+</html>

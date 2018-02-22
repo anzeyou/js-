@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			div{
+				width: 100px;
+				height: 50px;
+				background: red;
+				margin: 10px;
+			}
+			#box{
+				width: 1px;
+				height: 300px;
+				background: black;
+				position: absolute;
+				left: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName('div');
+			var timer=null;
+			
+			for(var i=0;i<divs.length;i++){
+				//给每一个div添加一个timer属性，保证他们的运动互不影响
+				//清楚定时器只是清除自己的定时器
+				divs[i].timer=null;
+				divs[i].onmouseover=function(){
+					var that=this;
+					move(that,300);
+				};
+				divs[i].onmouseout=function(){
+					var that=this;
+					move(that,100);
+				};
+			}
+			
+			
+			//运动框架
+			function move(obj,target){
+				clearInterval(obj.timer);
+				obj.timer=setInterval(function(){
+					if(obj.offsetWidth==target){
+						clearInterval(obj.timer);
+					}
+					else{
+						var speed=(target-obj.offsetWidth)/6
+						speed=speed>0?Math.ceil(speed):Math.floor(speed);
+						obj.style.width=obj.offsetWidth+speed+'px';
+					}
+				},30);
+			}
+			
+		</script>
+	</body>
+</html>

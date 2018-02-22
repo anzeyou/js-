@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 500px; 
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		姓名：<input type="text" id="xingming" value=""/>
+		年龄：<input type="text" id="age" value=""/>
+		性别：<input type="text" id="sex" value=""/>
+		<input type="button" id="btn" value="添加"/>
+		
+		<table border="1px" id="tab1">
+			<thead>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>操作</td>
+			</thead>
+			<tbody>
+				<tr>
+					<td>a</td>
+					<td>18</td>
+					<td>女</td>
+					<td><a href="##">删除</a></td>
+				</tr>
+				<tr>
+					<td>b</td>
+					<td>12</td>
+					<td>女</td>
+					<td><a href="##">删除</a></td>
+				</tr>
+				<tr>
+					<td>c</td>
+					<td>17</td>
+					<td>男</td>
+					<td><a href="##">删除</a></td>
+				</tr>
+				<tr>
+					<td>d</td>
+					<td>11</td>
+					<td>男</td>
+					<td><a href="##">删除</a></td>
+				</tr>
+				<tr>
+					<td>e</td>
+					<td>14</td>
+					<td>女</td>
+					<td><a href="##">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			var tab1=document.getElementById('tab1');
+			var tb=tab1.getElementsByTagName('tbody')[0];
+			var xingming=document.getElementById('xingming');
+			var age=document.getElementById('age');
+			var sex=document.getElementById('sex');
+			var btn=document.getElementById('btn');
+			
+			btn.onclick=function(){
+				//创建一行
+				var ntr=document.createElement('tr');
+				
+				//行内创建4列
+				var ntd=document.createElement('td');
+				ntd.innerHTML=xingming.value;
+				ntr.appendChild(ntd);
+				
+				var ntd=document.createElement('td');
+				ntd.innerHTML=age.value;
+				ntr.appendChild(ntd);
+				
+				var ntd=document.createElement('td');
+				ntd.innerHTML=sex.value;
+				ntr.appendChild(ntd);
+				
+				var ntd=document.createElement('td');
+				ntd.innerHTML='<a href="##">删除</a>'
+				ntr.appendChild(ntd);
+				
+				tab1.tBodies[0].appendChild(ntr);
+				
+				
+				var tdas=ntd.getElementsByTagName('a')[0].onclick=function(){
+					tab1.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+			}
+			
+			
+			var als=tab1.tBodies[0].getElementsByTagName('a');
+			for(var i=0;i<als.length;i++){
+				als[i].onclick=function(){
+					tab1.tBodies[0].removeChild(this.parentNode.parentNode)
+				}
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
